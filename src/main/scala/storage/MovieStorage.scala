@@ -82,7 +82,7 @@ object MovieStorage extends StorageTemplate[MovieIdentifier, BasicMovie]
         .filter(_.startYear >= Year(mq.startYear))
         .filter(_.startYear <= Year(mq.endYear))
         .filter(r => r.primaryTitle === r.originalTitle)
-        .sortBy(_.averageRating)
+        .sortBy(_.averageRating.desc)
         .take(100)
         .result).map(_ map from)
 }
